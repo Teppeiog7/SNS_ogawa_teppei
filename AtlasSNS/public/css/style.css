@@ -1,22 +1,583 @@
 @charset "utf-8";
-html{
-}
-body{
-}
-/* header */
-header{
-    background:#186AC9;
+
+html {}
+
+body {}
+
+/* ------ header ------ */
+header {
+    background: #186AC9;
 }
 
-/* main content */
-#row{
+#head {
+    display: flex;
+    align-items: flex-start;
+}
+
+#head ul {
+    display: flex;
+}
+
+#head h1 img {
+    width: 40%;
+    margin: 30px;
+}
+
+.right-aligned {
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px;
+}
+
+.right-aligned ul li {
+    color: #fff;
+}
+
+
+.right-aligned ul li {
+    margin-right: 30px;
+}
+
+.right-aligned ul li:nth-child(1) {
+    margin: 30px;
+    font-size: 24px;
+}
+
+.right-aligned ul li:nth-child(2) {
+    padding: 20px;
+    text-align: center;
+}
+
+
+
+/*アコーディオン機能の追加内容*/
+
+nav {
+    display: none;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    position: absolute;
+    top: 112%;
+    left: 12%;
+    border: 1px solid #000;
+}
+
+nav a {
+    padding: 30px;
+    display: block;
+    color: #828282;
+    font-size: 32px;
+}
+
+nav a:hover {
+    background-color: #00297E;
+    color: #fff;
+}
+
+.nav-open::before {
+    content: "∨";
+    font-size: 35px;
+    /*position: absolute;*/
+    /*right: 20px;:*/
+}
+
+.nav-open.active::before {
+    content: "∧";
+    font-size: 35px;
+}
+
+/*ここまでアコーディオン機能の追加内容*/
+
+/* ------ header ------ */
+
+/* ------ここから index.blade.php ------ */
+
+#row {
     display: flex;
     flex-flow: row wrap;
 }
-#container{
+
+#container {
     flex: 0 0 80%;
 }
-#side-bar{
+
+#side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
+}
+
+.container01 ul {
+    display: flex;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.container01 ul li:nth-child(1) {
+    width: 15%;
+}
+
+.container01 ul li img:nth-child(1) {
+    float: right;
+}
+
+.container01 ul li:nth-child(1) img:first-child {
+    margin-right: 15px;
+}
+
+.container01 ul li:nth-child(2) {
+    width: 70%;
+}
+
+.userImage {
+    width: 10%;
+}
+
+.form-group {
+    width: 100%;
+
+}
+
+.form-group input {
+    width: 100%;
+    height: 40px;
+    /* テキストの高さを指定 */
+    border: none;
+    /* 枠をなくす */
+    border-radius: 0;
+    /* 枠の角を丸くしない */
+    padding: 5px;
+    /* テキストと枠の間の余白を指定 */
+    outline: none;
+    /* クリックしたときの枠をなくす */
+    border: 1px solid;
+}
+
+#container Form image {
+    width: 10%;
+}
+
+.image-button {
+    padding: 0;
+    /* ボタンの内側の余白を0にする */
+    border: none;
+    /* ボタンの枠線をなくす */
+    background: transparent;
+    /* 背景を透明にする */
+    /*cursor: pointer;*/
+    /* カーソルをポインターに変更する */
+    display: inline-block;
+    /* ボタンをインライン要素として配置する */
+    width: 100px;
+    /* ボタンの幅を指定する */
+    height: 100px;
+    /* ボタンの高さを指定する */
+    overflow: hidden;
+    /* コンテンツがボタンの外にはみ出さないようにする */
+}
+
+.image-button img {
+    width: 100%;
+    /* 画像の幅をボタンに合わせる */
+    height: 100%;
+    /* 画像の高さをボタンに合わせる */
+    object-fit: cover;
+    /* 画像を縦横比を保ちつつコンテンツボックスにフィットさせる */
+}
+
+.main_border {
+    display: block;
+    width: 100%;
+    border-bottom: 10px solid #E0E0E0;
+}
+
+span {
+    display: block;
+    width: 100%;
+    border-bottom: 3px solid #E0E0E0;
+}
+
+/* --------------------- */
+
+#UserIsFollowing ul {
+    display: flex;
+    margin: 20px;
+}
+
+#UserIsFollowing ul li:nth-child(1) {
+    width: 20%;
+}
+
+#UserIsFollowing ul li img:nth-child(1) {
+    float: right;
+    margin: 15px;
+}
+
+#UserIsFollowing ul li:nth-child(2) {
+    width: 60%;
+    height: 150px;
+}
+
+#UserIsFollowing ul li p {
+    margin: 15px;
+}
+
+#UserIsFollowing ul li:nth-child(3) {
+    width: 20%;
+}
+
+#UserIsFollowing li p:only-child {
+    float: right;
+    margin: 15px;
+}
+
+/* --------------------- */
+
+#User_comment ul {
+    display: flex;
+    margin: 20px;
+}
+
+#User_comment ul li:nth-child(1) {
+    width: 20%;
+}
+
+#User_comment ul li img:nth-child(1) {
+    float: right;
+}
+
+#User_comment ul li:nth-child(2) {
+    width: 60%;
+    height: 150px;
+}
+
+#User_comment ul li:nth-child(3) {
+    width: 20%;
+}
+
+#User_comment ul li p {
+    margin: 15px;
+}
+
+#User_comment ul li:nth-child(3) p:first-child {
+    float: right;
+}
+
+#User_button {
+    display: flex;
+    margin-top: 50px;
+    float: right;
+}
+
+/* --------------------- */
+
+.btn_space {
+    width: 100%;
+}
+
+.btn_space p {
+    margin: 30px;
+    font-size: 18px;
+}
+
+
+.btn {
+    display: inline-block;
+    background-color: #0656CF;
+    /* 背景色 */
+    color: #fff;
+    /* 文字色 */
+    padding: 16px 40px;
+    /* 上下の余白、左右の余白 */
+    text-decoration: none;
+    /* デフォルトで入るリンクの下線を消す */
+    border-radius: 10px;
+    /* 角を丸くする */
+}
+
+.btn a {
+    color: #fff;
+}
+
+#confirm p:nth-child(1) {
+    margin: 25px;
+    font-size: 18px;
+}
+
+.btn_space ul li {
+    margin: 30px;
+}
+
+.btn_space ul li:nth-child(2) {
+    padding-left: 20%;
+}
+
+.btn_space ul li:nth-child(4) {
+    padding-left: 20%;
+}
+
+.user_search {
+    text-align: center;
+    margin: 20px;
+}
+
+/* --------------------- */
+
+.content {
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.modal {
+    display: none;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.modal__bg {
+    background: rgba(0, 0, 0, 0.8);
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+}
+
+.modal__content {
+    background: #fff;
+    left: 50%;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%
+}
+
+
+/* --------------------- */
+
+.delete_button {
+    position: relative;
+    width: 80px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.delete_button img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 50%;
+    display: block;
+    -webkit-transition: .4s ease-in-out;
+    transition: .4s ease-in-out;
+}
+
+.delete_button:hover img:nth-of-type(2) {
+    opacity: 0;
+}
+
+#imageB {
+    z-index: 0;
+    background-color: #fff;
+}
+
+/* ------ここまで index.blade.php ------ */
+
+/* ------ここから followerList.blade.php と followList.blade.php------ */
+
+.all_container {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.all_container ul {
+    display: flex;
+    margin-top: 20px;
+}
+
+.all_container h2 {
+    margin: 5px;
+    text-align: center;
+    font-size: 24px;
+    padding: 30px;
+}
+
+.all_container ul li:first-child {
+    width: 30%;
+    margin: 5px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.all_container ul li:last-child {
+    display: flex;
+    width: 30%;
+    margin: 5px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.all_container ul li img:last-child {
+    margin: 5px;
+}
+
+/* ------ここまで followerList.blade.php と followList.blade.php------ */
+
+
+/* ------ここから profileEdit.blade.php ------ */
+
+.Profile_Edit {
+    margin: 50px auto 0;
+    width: 90%;
+}
+
+#form_inner01 {
+    width: 20%;
+}
+
+#form_inner01 img {
+    float: right;
+}
+
+#form_inner02 {
+    width: 80%;
+}
+
+#form_inner02 ul li {
+    position: relative;
+}
+
+#form_inner02 ul li label {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#form_inner02 ul li:first-child {
+    width: 30%;
+}
+
+.Profile_Edit ul {
+    display: flex;
+}
+
+.Profile_Edit ul li {
+    margin: 15px;
+    width: 50%;
+}
+
+.Profile_Edit input {
+    width: 100%;
+    padding: 15px;
+}
+
+#form_button {
+    text-align: center;
+}
+
+#form_button button {
+    display: inline-block;
+    background-color: #ED3A50;
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    width: 20%;
+    font-size: 18px;
+}
+
+/* ------ここまで profileEdit.blade.php ------ */
+
+
+/* ------ここから search.blade.php ------ */
+
+.search_form {
+    width: 90%;
+    display: block;
+    margin: 50px;
+}
+
+.user_search {
+    width: 60%;
+    margin: 50px auto 0;
+}
+
+.user_search ul {
+    display: flex;
+}
+
+.user_search ul li {
+    width: 33.3%;
+    margin-bottom: 30px;
+}
+
+.user_search ul li img:first-child {
+    float: right;
+}
+
+.user_search ul li:nth-child(2) {
+    padding: 20px;
+    text-align: left;
+}
+
+/* ------ここまで search.blade.php ------ */
+
+
+/* ------ここから profileEdit.blade.php ------ */
+
+.user_profile {
+    margin: 50px;
+}
+
+.user_profile ul {
+    display: flex;
+}
+
+.user_profile ul li:first-child {
+    width: 15%;
+    float: right;
+}
+
+.user_profile ul li img:first-child {
+    float: right;
+}
+
+.user_profile ul li:nth-child(2) {
+    width: 70%;
+}
+
+.user_profile ul li:last-child {
+    position: relative;
+    width: 15%;
+}
+
+.profile_button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+
+
+.user_profile ul li div {
+    display: flex;
+}
+
+.user_profile ul li div p {
+    padding: 20px;
+    font-size: 24px;
+}
+
+.user_profile ul li div p:nth-child(2) {
+    padding-left: 150px;
 }
