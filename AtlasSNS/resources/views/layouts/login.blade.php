@@ -46,7 +46,7 @@
           </li>
           <li>
             @if (Auth::check())
-            <img src="{{ asset('/images/' . Auth::user()->images) }}">
+            <img src="{{ asset('/storage/images/' . Auth::user()->images) }}">
             @endif
           </li>
         </ul>

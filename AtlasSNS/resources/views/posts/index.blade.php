@@ -9,16 +9,22 @@
     <ul>
       <li>
         @if (Auth::check())
-        <img src="{{ asset('/images/' . Auth::user()->images) }}">
+        <img src="{{ asset('/storage/images/' . Auth::user()->images) }}">
         @endif
       </li>
       <li>
         <div class="form-group">
-          {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) !!}
+          {!! Form::textarea('newPost', null, [
+          'required',
+          'class' => 'form-control',
+          'placeholder' => '投稿内容を入力してください',
+          'maxlength' => 150,
+          ]
+          )!!}
         </div>
       </li>
       <li>
-        <button type="submit" class="image-button"><img src="{{ asset('/images/post.png') }}"></button>
+        <button type="submit" id="image-button"><img src="{{ asset('/images/post.png') }}"></button>
       </li>
       {!! Form::close() !!}
     </ul>
@@ -32,19 +38,20 @@
 
   <!-- もしログインユーザーがフォローしているユーザーがいればフォローユーザーの投稿を出力 -->
 
-  @php
+  <!-- @php
   $images = $post->user->images; // ユーザーの画像パスを取得
-  $imageUrl = asset('/images/' . $images); // 画像のURLを生成
-  @endphp
+  $imageUrl = asset('/storage/images/' . $images); // 画像のURLを生成
+  @endphp -->
 
   <div id="UserIsFollowing">
     <ul>
       <li>
-        <img src="{{ $imageUrl }}">
+        <img src="{{ asset('/storage/images/' . $images) }}">
       </li>
       <li>
         <p>{{ $post->user->username }}</p>
-        <p>{{ $post->post }}</p>
+        <!-- ▼改行された状態でindex.bladeに出力させる -->
+        <p>{!! nl2br(htmlspecialchars($post->post)) !!}</p>
       </li>
       <li>
         <p>{{ $post->created_at }}</p>
@@ -53,16 +60,18 @@
   </div>
 
   @elseif(Auth::user()->id === $post->user->id)
+
   <!-- ログインユーザーだけの投稿を出力 -->
-  @php
+
+  <!-- @php
   $images = $post->user->images; // ユーザーの画像パスを取得
-  $imageUrl = asset('/images/' . $images); // 画像のURLを生成
-  @endphp
+  $imageUrl = asset('/storage/images/' . $images); // 画像のURLを生成
+  @endphp -->
 
   <div id="User_comment">
     <ul>
       <li>
-        <p><img src="{{ $imageUrl }}"></p>
+        <p><img src="{{ asset('/storage/images/' . $images) }}"></p>
       </li>
       <li>
         <p>{{ $post->user->username }}</p>
@@ -90,14 +99,13 @@
   <div class="modal js-modal">
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">
-      {!! Form::open(['url' => '/post/update']) !!}
-      <div class="form-group">
-        {!! Form::hidden('id', $post->id) !!}
-        {!! Form::input('text', 'upPost', $post->post, ['required', 'class' => 'form-control']) !!}
-      </div>
-      <button type="submit" class="image-button"><img src="{{ asset('/images/edit.png') }}" width="50" height="50"></button>
-      {!! Form::close() !!}
-      <a class="js-modal-close" href="">閉じる</a>
+      <form action="/post/update" method="post">
+        <textarea name="upPost" class="modal_post"></textarea>
+        <input type="hidden" name="id" class="modal_id" value="{{ $post->id }}">
+        <button type="submit" class="image-button"><img src="{{ asset('/images/edit.png') }}" width="50" height="50"></button>
+        {{ csrf_field() }}
+        <a class="js-modal-close" href="">閉じる</a>
+      </form>
     </div>
   </div>
 

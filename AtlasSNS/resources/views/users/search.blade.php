@@ -7,8 +7,14 @@
     @csrf
     <input type="text" name="keyword" class="form" placeholder="ユーザー名">
     <button type="submit" class="btn btn-success">検索</button>
+    <p>
+    @if (!empty($keyword))
+    検索キーワード：{{ $keyword }}
+    @endif
+    </p>
   </form>
 </dic>
+
 
 <span></span>
 
@@ -16,14 +22,17 @@
   @foreach ($users as $user)
   <ul>
     <li>
-      @php
+      <!-- @php
       $images = $user->images; // ユーザーの画像パスを取得
-      $imageUrl = asset('/images/' . $images); // 画像のURLを生成
-      @endphp
-      <img src="{{ $imageUrl }}">
+      $imageUrl = asset('/storage/images/' . $images); // 画像のURLを生成
+      @endphp -->
+      <img src="{{ asset('/storage/images/' . $images) }}">
     </li>
     <li>
       {{ $user->username }}さん
+    </li>
+    <li>
+      {{ $user->username }}
     </li>
     <li>
       @if (Auth::user()->isFollowing($user->id))

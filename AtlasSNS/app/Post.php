@@ -13,7 +13,7 @@ class Post extends Model
 
     public function user()
    {
-        //＄thisはThe Bookの事
+        //＄thisはThe postの事
         //The post belongs to many users.
         return $this->belongsTo('App\User');
     }

@@ -20,7 +20,7 @@
         <ul>
           <li id="form_inner01">
             @if (Auth::check())
-            <img src="{{ asset('/images/' . Auth::user()->images) }}">
+            <img src="{{ asset('/storage/images/' . Auth::user()->images) }}">
             @endif
           </li>
           <li id="form_inner02">
@@ -29,6 +29,7 @@
                 <label for="name">User Name</label>
               </li>
               <li>
+                <!-- UsersControllerの$user配列を利用して値を出力 -->
                 <input type="text" id="name" name="username" value="{{ $user->username }}">
               </li>
             </ul>
@@ -37,6 +38,7 @@
                 <label for="mail">Email Address</label>
               </li>
               <li>
+                <!-- UsersControllerの$user配列を利用して値を出力 -->
                 <input type="mail" id="mail" name="mail" value="{{ $user->mail }}">
               </li>
             </ul>

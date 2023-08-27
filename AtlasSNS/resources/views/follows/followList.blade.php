@@ -13,7 +13,7 @@
       @php
       $user = App\User::find($userId);
       $imagePath = $user->images; // ユーザーの画像パスを取得
-      $imageUrl = asset('/images/' . $imagePath); // 画像のURLを生成
+      $imageUrl = asset('/storage/images/' . $imagePath); // 画像のURLを生成
       @endphp
       <div class="container02">
         <a href="/users/{{ $userId }}">
@@ -33,7 +33,7 @@ $sortedPosts = $posts->sortByDesc('created_at');
 @foreach($sortedPosts as $post)
 @php
 $images = $post->user->images; // ユーザーの画像パスを取得
-$imageUrl = asset('/images/' . $images); // 画像のURLを生成
+$imageUrl = asset('/storage/images/' . $images); // 画像のURLを生成
 @endphp
 <div id="UserIsFollowing">
   <ul>
