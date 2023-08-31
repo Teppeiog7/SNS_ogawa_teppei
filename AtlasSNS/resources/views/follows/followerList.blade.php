@@ -10,7 +10,7 @@
     <li>
       @foreach ($users as $userId)
       @php
-      $user = App\User::find($userId);
+      $user = App\User::find($userId);//Userモデル(userテーブル)にあるidが$userIdと同じものを見つける。
       $imagePath = $user->images; // ユーザーの画像パスを取得
       $imageUrl = asset('/storage/images/' . $imagePath); // 画像のURLを生成
       @endphp
@@ -23,11 +23,10 @@
     </li>
   </ul>
 </div>
-
 <span></span>
 
 @php
-$sortedPosts = $posts->sortByDesc('created_at');
+$sortedPosts = $posts->sortByDesc('created_at');//指定したカラム（ここでは created_at カラム）の値を降順（大きい値から小さい値へ）でソートするためのメソッド
 @endphp
 
 @foreach($sortedPosts as $post)
@@ -35,6 +34,7 @@ $sortedPosts = $posts->sortByDesc('created_at');
 $images = $post->user->images; // ユーザーの画像パスを取得
 $imageUrl = asset('/storage/images/' . $images); // 画像のURLを生成
 @endphp
+
 <div id="UserIsFollowing">
   <ul>
     <li>
@@ -44,7 +44,8 @@ $imageUrl = asset('/storage/images/' . $images); // 画像のURLを生成
     </li>
     <li>
       <p>{{ $post->user->username }}</p>
-      <p>{{ $post->post }}</p>
+      <!-- ▼改行された状態でindex.bladeに出力させる -->
+      <p>{!! nl2br(e($post->post)) !!}</p>
     </li>
     <li>
       <p>{{ $post->created_at }}</p>

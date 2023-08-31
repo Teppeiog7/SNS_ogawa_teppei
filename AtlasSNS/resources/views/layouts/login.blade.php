@@ -17,6 +17,8 @@
   <link rel="icon" href="画像URL" sizes="62x62" type="image/png" />
   <!--iphoneのアプリアイコン指定-->
   <link rel="apple-touch-icon-precomposed" href="画像のURL" />
+  <!-- bootstrap -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> -->
   <!--OGPタグ/twitterカード-->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="./js/script.js"></script>
@@ -81,7 +83,7 @@
       </div>
       <span></span>
       <div class="user_search">
-        <p class="btn"><a href="/search">ユーザー検索</a></p>
+        <a href="/search" class="btn">ユーザー検索</a>
       </div>
     </div>
 </body>

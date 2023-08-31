@@ -17,24 +17,40 @@ class FollowsController extends Controller
     //=====================================
 
     public function followList(){
-        $user = Auth::user();//ログインユーザー情報の取得
+        //▼ログインユーザー情報の取得
+        $user = Auth::user();
         //ddd($user);
-        $followingUsers = $user->followUsers()->pluck('followed_id');; // ログインユーザーのフォローしているユーザーの取得
+        //▼ログインユーザーのフォローしているユーザーの取得
+        //pluckメソッド:指定したカラムの値を取得
+        $followingUsers = $user->followUsers()->pluck('followed_id');;
         //ddd($followingUsers);
+        //▼「Postテーブルのユーザー」と「ユーザーがフォローしているid」が一致している値をすべて出力
         $posts = Post::with('user')->whereIn('user_id', $followingUsers)->get();
         //ddd($posts);
+        //▼viewメソッド：画面遷移時に使用するメソッド
+        //▼第一引数について：'follows' フォルダ内の 'followList.blade.php' ファイルを指定しています。(画面遷移)
+        //▼第二引数について：キー名が変数名としてfollowList.blade内のforeachで利用される
+        //▼第三引数について：キー名が変数名としてfollowList.blade内のforeachで利用される
         return view('follows.followList', ['users' => $followingUsers], ['posts' => $posts]);
     }
 
     //=====================================
 
     public function followerList(){
-        $user = Auth::user();//ログインユーザー情報の取得
+        //▼ログインユーザー情報の取得
+        $user = Auth::user();
         //ddd($user);
-        $followersUsers = $user->followers()->pluck('following_id');; // ログインユーザーのフォローしているユーザーの取得
+        //▼ログインユーザーがフォローされているユーザーの取得
+        //pluckメソッド:指定したカラムの値を取得
+        $followersUsers = $user->followers()->pluck('following_id');;
         //ddd($followingUsers);
+        //▼「Postテーブルのユーザー」と「ユーザーがフォローされているid」が一致している値をすべて出力
         $posts = Post::with('user')->whereIn('user_id', $followersUsers)->get();
         //ddd($posts);
+        //▼viewメソッド：画面遷移時に使用するメソッド
+        //▼第一引数について：'follows' フォルダ内の 'followerList.blade.php' ファイルを指定しています。(画面遷移)
+        //▼第二引数について：キー名が変数名としてfollowList.blade内のforeachで利用される
+        //▼第三引数について：キー名が変数名としてfollowList.blade内のforeachで利用される
         return view('follows.followerList', ['users' => $followersUsers], ['posts' => $posts]);
     }
 
@@ -56,6 +72,7 @@ class FollowsController extends Controller
              $follower->follow($user->id);
         }
 
+        //▼backメソッド：上記処理後、前の画面に戻る
         return back();
 
      }
@@ -68,7 +85,7 @@ class FollowsController extends Controller
         //▼認証済みのログインユーザーのすべての情報を取得
         $follower = Auth::user();
         ///ddd($follower);
-        //ログインユーザーが相手をフォローしているかどうか確認する
+        //▼ログインユーザーが相手をフォローしているかどうか確認する
         //フォローしていれば「選択したユーザー情報」を返す
         $is_following = $follower->isFollowing($user->id);
         //ddd($is_following);
@@ -78,6 +95,7 @@ class FollowsController extends Controller
 
         }
 
+        //▼backメソッド：上記処理後、前の画面に戻る
         return back();
 
     }

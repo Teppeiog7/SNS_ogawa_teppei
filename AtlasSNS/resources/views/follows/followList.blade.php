@@ -13,6 +13,7 @@
       @php
       $user = App\User::find($userId);
       $imagePath = $user->images; // ユーザーの画像パスを取得
+      $imageUrl = asset('/images/' . $imagePath); // 画像のURLを生成
       $imageUrl = asset('/storage/images/' . $imagePath); // 画像のURLを生成
       @endphp
       <div class="container02">
@@ -44,7 +45,7 @@ $imageUrl = asset('/storage/images/' . $images); // 画像のURLを生成
     </li>
     <li>
       <p>{{ $post->user->username }}</p>
-      <p>{{ $post->post }}</p>
+      <p>{!! nl2br(e($post->post)) !!}</p>
     </li>
     <li>
       <p>{{ $post->created_at }}</p>

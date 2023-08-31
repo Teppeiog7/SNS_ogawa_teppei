@@ -24,6 +24,7 @@ class User extends Authenticatable
     {
     //$thisはUserの事
     //The User has many posts.
+    //UserモデルはPost情報がたくさんもっている。
     return $this->hasMany('App\Post');
     }
 
@@ -41,7 +42,7 @@ class User extends Authenticatable
     //=====================================
 
     //▼追加
-    //フォローしている側
+    //フォローしている側(ユーザーがフォローしている)
     //第一引数：相手のモデル
     //第二引数：中間テーブルを記載
     //第三引数：自分の外部キー
@@ -55,7 +56,7 @@ class User extends Authenticatable
     //=====================================
 
     //▼追加
-    //フォローされている側
+    //フォローされている側(ユーザーが外部からフォローされている)
     //第一引数：相手のモデル
     //第二引数：中間テーブルを記載
     //第三引数：自分の外部キー
@@ -68,7 +69,7 @@ class User extends Authenticatable
 
     //=====================================
 
-    //フォロー
+    //▼フォロー
     public function follow($user_id)
     {
         //$thisは「Auth::user（ ）」のこと。すなわちログインユーザーのこと。
@@ -79,7 +80,7 @@ class User extends Authenticatable
 
     //=====================================
 
-    //フォロー解除
+    //▼フォロー解除
     public function unfollow($user_id)
     {
         //$thisは「Auth::user（ ）」のこと。すなわちログインユーザーのこと。
@@ -90,7 +91,7 @@ class User extends Authenticatable
 
     //=====================================
 
-    //フォローしているかの判定
+    //▼フォローしているかの判定
     public function isFollowing(Int $user_id)
     {
         //$thisは「Auth::user（ ）」のこと。すなわちログインユーザーのこと。
@@ -102,9 +103,13 @@ class User extends Authenticatable
 
     //=====================================
 
-    //フォローされているかの判定
+    //▼フォローされているかの判定
     public function isFollowed(Int $user_id)
     {
+        //$thisは「Auth::user（ ）」のこと。すなわちログインユーザーのこと。
+        //followers()はフォローされている側から見たメソッドのこと。(63行目)
+        //where()は、どの値をどこのカラムに代入するか指定をする。今回は$user_idの値をfollowing_idカラムに代入する
+        //first()は最初のレコードを取得する
         return $this->followers()->where('following_id', $user_id)->first();
     }
 

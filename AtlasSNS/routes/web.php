@@ -43,44 +43,45 @@ Route::get('/top','PostsController@index');
 //PostsControllerにあるshowメソッドを用いて、/topへ遷移する。
 Route::get('/top','PostsController@show');
 
-//ユーザーのプロフィール情報
+//▼ユーザーのプロフィール情報
 //UsersControllerにあるprofileメソッドへidが送られる。profileメソッド処理後、/profileへ遷移する。
 Route::get('/users/{id}/','UsersController@profile');
 
-//ユーザーのプロフィール編集画面
+//▼ユーザーのプロフィール編集画面
 //UsersControllerにあるprofileEditメソッドで処理されたあと、/profileEditへ遷移する。
 Route::get('/profileEdit','UsersController@profileEdit');
 
-//ユーザーのプロフィール編集画面後の処理内容
+//▼ユーザーのプロフィール編集画面後の処理内容
 //UsersControllerにあるprofileUpdateメソッドで処理されたあと、/profileUpdateへ遷移する。
 Route::post('/profileUpdate','UsersController@profileUpdate');
 
-//検索画面のログインユーザー取得
+//▼検索画面のログインユーザー取得
 //UsersControllerにあるusersメソッドで処理されたあと、/searchへ遷移する。
 Route::get('/search','UsersController@users');
 
-//検索画面の検索ワード取得
+//▼検索画面の検索ワード取得
 //UsersControllerにあるsearchメソッドで処理されたあと、/searchへ遷移する。
 Route::post('/search','UsersController@search');
 
-/*Route::get('/follow-list','PostsController@index');*/
+//▼フォローリスト表示
+//FollowsControllerにあるfollowListメソッドで処理されたあと、followListへ遷移する。
 Route::get('/follow-list','FollowsController@followList');
 
-/*Route::get('/follow-list','FollowsController@followerShow');*/
+//▼フォロワーリスト表示
+//FollowsControllerにあるfollowerListメソッドで処理されたあと、followListへ遷移する。
+Route::get('/follower-list','FollowsController@followerList');
 
 //▼フォロー機能
+//FollowsControllerにあるfollowメソッドで処理されたあと、followListへ遷移する。
 Route::get('/search/{user}/follow','FollowsController@follow');
-//▼フォロー削除
-Route::get('/search/{user}/unfollow','FollowsController@unfollow');
 
-/*Route::get('/follower-list','PostsController@index');*/
-Route::get('/follower-list','FollowsController@followerList');
+//▼フォロー削除
+//FollowsControllerにあるunfollowメソッドで処理されたあと、followListへ遷移する。
+Route::get('/search/{user}/unfollow','FollowsController@unfollow');
 
 //▼新規投稿
 //PostsControllerにあるcreateメソッドで処理されたあと、/topへ遷移する。(/top遷移はコントローラー上にあるcreateメソッド内で処理される。)
 Route::post('post/create', 'PostsController@create');
-
-/*Route::get('post/{id}/update-form', 'PostsController@updateForm');*/
 
 //▼投稿の編集
 //PostsControllerにあるupdateメソッドで処理されたあと、/topへ遷移する。(/top遷移はコントローラー上にあるupdateメソッド内で処理される。)
@@ -90,11 +91,7 @@ Route::post('post/update', 'PostsController@update');
 //PostsControllerにあるdeleteメソッドで処理されたあと、/topへ遷移する。(/top遷移はコントローラー上にあるdeleteメソッド内で処理される。)
 Route::get('post/{id}/delete', 'PostsController@delete');
 
-/*
-Route::get('/top','FollowController@show');//フォロー、フォロアー数の表示
-*/
-
-//↓logout機能
+//▼logout機能
 Route::get('/logout', 'Auth\LoginController@logout');
 
 //=====================================

@@ -15,6 +15,7 @@ class Post extends Model
    {
         //＄thisはThe postの事
         //The post belongs to many users.
+        //Postモデルはusers情報をもっている。
         return $this->belongsTo('App\User');
     }
 

@@ -4,7 +4,8 @@ html {}
 
 body {}
 
-/* ------ header ------ */
+/* login.blade.php */
+
 header {
     background: #186AC9;
 }
@@ -23,6 +24,8 @@ header {
     margin: 30px;
 }
 
+/* アコーディオン機能の内容 */
+
 .right-aligned {
     display: flex;
     align-items: flex-end;
@@ -35,7 +38,6 @@ header {
 .right-aligned ul li {
     color: #fff;
 }
-
 
 .right-aligned ul li {
     margin-right: 30px;
@@ -50,10 +52,6 @@ header {
     padding: 20px;
     text-align: center;
 }
-
-
-
-/*アコーディオン機能の追加内容*/
 
 nav {
     display: none;
@@ -80,20 +78,12 @@ nav a:hover {
 .nav-open::before {
     content: "∨";
     font-size: 35px;
-    /*position: absolute;*/
-    /*right: 20px;:*/
 }
 
 .nav-open.active::before {
     content: "∧";
     font-size: 35px;
 }
-
-/*ここまでアコーディオン機能の追加内容*/
-
-/* ------ header ------ */
-
-/* ------ここから index.blade.php ------ */
 
 #row {
     display: flex;
@@ -107,6 +97,15 @@ nav a:hover {
 #side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
+}
+
+/*ここまでアコーディオン機能の内容*/
+/* login.blade.php */
+
+/* ------ ここから index.blade.php ------ */
+
+#container Form image {
+    width: 10%;
 }
 
 .container01 ul {
@@ -131,16 +130,15 @@ nav a:hover {
     width: 70%;
 }
 
-.form-group .form-control {
-    white-space: pre-wrap;
-}
-
 .userImage {
     width: 10%;
 }
 
-.form-group {
+.form-group textarea {
     width: 100%;
+    height: 70px;
+    border: none;
+    font-size: 24px;
 }
 
 .form-group input {
@@ -157,11 +155,7 @@ nav a:hover {
     /* クリックしたときの枠をなくす */
 }
 
-#container Form image {
-    width: 10%;
-}
-
-#image-button {
+#image-button01 {
     padding: 0;
     /* ボタンの内側の余白を0にする */
     border: none;
@@ -181,10 +175,38 @@ nav a:hover {
 }
 
 
-#image-button img {
+#image-button01 img {
     width: 100%;
     /* 画像の幅をボタンに合わせる */
     height: 100%;
+    /* 画像の高さをボタンに合わせる */
+    object-fit: cover;
+    /* 画像を縦横比を保ちつつコンテンツボックスにフィットさせる */
+}
+
+#image-button02 {
+    padding: 0;
+    /* ボタンの内側の余白を0にする */
+    border: none;
+    /* ボタンの枠線をなくす */
+    background: transparent;
+    /* 背景を透明にする */
+    /*cursor: pointer;*/
+    /* カーソルをポインターに変更する */
+    display: inline-block;
+    /* ボタンをインライン要素として配置する */
+    width: 100px;
+    /* ボタンの幅を指定する */
+    height: 100px;
+    /* ボタンの高さを指定する */
+    overflow: hidden;
+    /* コンテンツがボタンの外にはみ出さないようにする */
+}
+
+#image-button02 img {
+    width: 50%;
+    /* 画像の幅をボタンに合わせる */
+    height: 50%;
     /* 画像の高さをボタンに合わせる */
     object-fit: cover;
     /* 画像を縦横比を保ちつつコンテンツボックスにフィットさせる */
@@ -275,6 +297,7 @@ span {
 }
 
 /* --------------------- */
+/* ▼その他のボタン関連 */
 
 .btn_space {
     width: 100%;
@@ -326,59 +349,23 @@ span {
     margin: 20px;
 }
 
-/* --------------------- */
-
-.content {
-    margin: 0 auto;
-    padding: 40px;
+#red_btn {
+    display: inline-block;
+    background-color: #ED3A50;
+    /* 背景色 */
+    color: #fff;
+    /* 文字色 */
+    /* padding: 16px 40px; */
+    /* 上下の余白、左右の余白 */
+    text-decoration: none;
+    /* デフォルトで入るリンクの下線を消す */
+    /* border-radius: 10px; */
+    /* 角を丸くする */
 }
 
-.modal {
-    display: none;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    width: 100%;
+.icon-cross:before {
+    content: "\ea0f";
 }
-
-.modal__bg {
-    background: rgba(0, 0, 0, .5);
-    height: 100vh;
-    position: absolute;
-    width: 100%;
-}
-
-.modal__content {
-    background: #fff;
-    left: 50%;
-    padding: 40px;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    height: 60%
-}
-
-.modal__content form {
-    text-align: center;
-    margin: 30px;
-}
-
-.modal__content form textarea {
-    width: 100%;
-    height: 200px;
-}
-
-.modal__content form button:nth-child(3) {
-    text-align: center;
-    margin: 30px;
-}
-
-.modal__content form a {
-    margin: 30px;
-}
-
-/* --------------------- */
 
 .delete_button {
     position: relative;
@@ -411,7 +398,59 @@ span {
     background-color: #fff;
 }
 
+/* --------------------- */
+/* ▼モーダルの中身 */
 
+.content {
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.modal {
+    display: none;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.modal__bg {
+    background: rgba(0, 0, 0, .5);
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+}
+
+.modal__content {
+    background: #fff;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    border-radius: 10px;
+}
+
+.modal__content form {
+    text-align: center;
+    margin: 30px;
+}
+
+.modal__content form textarea {
+    width: 100%;
+    height: 200px;
+}
+
+.modal__content form button:nth-child(3) {
+    text-align: center;
+    margin: 30px;
+}
+
+.modal__content form a {
+    margin: 30px;
+}
+
+/* --------------------- */
 /* ------ここまで index.blade.php ------ */
 
 /* ------ここから followerList.blade.php と followList.blade.php------ */
@@ -462,6 +501,21 @@ span {
     width: 90%;
 }
 
+.Profile_Edit ul {
+    display: flex;
+}
+
+.Profile_Edit ul li {
+    margin: 15px;
+    width: 50%;
+}
+
+.Profile_Edit input {
+    width: 100%;
+    padding: 10px;
+    font-size: 24px;
+}
+
 #form_inner01 {
     width: 20%;
 }
@@ -483,24 +537,11 @@ span {
     top: 50%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
+    font-size: 24px;
 }
 
 #form_inner02 ul li:first-child {
     width: 30%;
-}
-
-.Profile_Edit ul {
-    display: flex;
-}
-
-.Profile_Edit ul li {
-    margin: 15px;
-    width: 50%;
-}
-
-.Profile_Edit input {
-    width: 100%;
-    padding: 15px;
 }
 
 #form_button {
@@ -515,7 +556,7 @@ span {
     text-decoration: none;
     border-radius: 10px;
     width: 20%;
-    font-size: 18px;
+    font-size: 24px;
 }
 
 /* ------ここまで profileEdit.blade.php ------ */
@@ -527,6 +568,29 @@ span {
     width: 90%;
     display: block;
     margin: 50px;
+}
+
+.search_form form ul {
+    display: flex;
+    position: relative;
+}
+
+.search_form form ul li p {
+    margin: 40px;
+    position: absolute;
+    right: 150px;
+    font-size: 24px;
+}
+
+.search_form ul li:first-child {
+    width: 40%;
+}
+
+.search_form ul li input:first-child {
+    margin: 20px;
+    width: 80%;
+    height: 60%;
+    font-size: 24px;
 }
 
 .user_search {
@@ -552,10 +616,20 @@ span {
     text-align: left;
 }
 
+.search_btn {
+    margin: 20px;
+    display: inline-block;
+    background-color: #0656CF;
+    color: #fff;
+    padding: 20px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
 /* ------ここまで search.blade.php ------ */
 
 
-/* ------ここから profileEdit.blade.php ------ */
+/* ------ここから profile.blade.php ------ */
 
 .user_profile {
     margin: 50px;
@@ -589,8 +663,6 @@ span {
     bottom: 0;
 }
 
-
-
 .user_profile ul li div {
     display: flex;
 }
@@ -603,3 +675,5 @@ span {
 .user_profile ul li div p:nth-child(2) {
     padding-left: 150px;
 }
+
+/* ------ここまで profileEdit.blade.php ------ */

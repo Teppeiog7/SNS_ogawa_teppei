@@ -30,9 +30,9 @@
   <p>{{ Form::label('パスワード確認') }}</p>
   {{ Form::password('password_confirmation',null,['class' => 'input']) }}
 
-  <div id="button">{{ Form::submit('登録') }}</div>
+  <div id="button">{{ Form::submit('RGEISTER') }}</div>
 
-  <p class="btn"><a href="/login">ログイン画面へ戻る</a></div>
+  <div class="btn"><a href="/login">ログイン画面へ戻る</a></div>
 </div>
 
 {!! Form::close() !!}

@@ -20,10 +20,22 @@ class UsersController extends Controller
 
     public function profile($id){
         //dd($id);
+
+        //▼Userモデル(usersテーブル)を使用して、usersテーブルの'id'カラムのidと送られてきたユーザーidが同じ情報を1つ分抽出する。
         $profileUser = User::where('id', $id)->first();
         //ddd($profileUser);
-        $posts = Post::with('user')->where('user_id', $id)->get();
+
+        //▼Postモデルを使用して全ユーザー情報を新しい日付順で抽出する。
+        //▼withメソッド：各投稿に関連するユーザー情報を事前に取得する。
+        //▼whereメソッド：postsテーブルの'user_id'カラムのidとプロフィールのユーザーidが同じ情報を抽出する。
+        //▼getメソッド：すべて抽出
+        $posts = Post::latest()->with('user')->where('user_id', $id)->get();
         //ddd($posts);
+
+        //▼viewメソッド
+        //第一引数:usersフォルダにあるprofile.bladeに遷移する。
+        //第二引数:キー名が変数名としてprofile.blade内のforeachで利用される。
+        //第三引数:キー名が変数名としてprofile.blade内のforeachで利用される。
         return view('users.profile',['profileUser'=>$profileUser],['posts'=>$posts]);
     }
 
@@ -79,7 +91,7 @@ class UsersController extends Controller
 
     //=====================================
 
-    //???
+    //?
     public function show(Follower $follower)
     {
         $follow_count = $follower->getFollowCount($user->id);
@@ -193,10 +205,6 @@ class UsersController extends Controller
 
 
     //=====================================
-
-    public function index(){
-
-    }
 
 }
 

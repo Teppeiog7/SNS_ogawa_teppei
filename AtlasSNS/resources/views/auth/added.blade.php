@@ -3,13 +3,15 @@
 @section('content')
 
 <div id="clear">
-  <p> {{ session('username') }} さん</p>
-  <p>ようこそ！AtlasSNSへ！</p>
+  <p id="bold"> {{ session('username') }} さん<br>ようこそ！AtlasSNSへ！</p>
   <span></span>
   <p>ユーザー登録が完了しました。</p>
   <p>早速ログインをしてみましょう。</p>
-
-  <p class="btn"><a href="/login">ログイン画面へ</a></p>
+  <div id="btn_added">
+    <a href="/login" id="button_added">
+      <button type="button">ログイン画面へ</button>
+    </a>
+  </div>
 </div>
 
 @endsection
