@@ -19,8 +19,8 @@
     </li>
     <li>
       <div class="profile_button">
-        <!-- Auth::user()：現在ログインしているユーザーの情報を取得するための方法 -->
-        <!-- isFollowingメソッド：ユーザーがフォローしているか -->
+        <!-- ▼Auth::user()：現在ログインしているユーザーの情報を取得するための方法 -->
+        <!-- ▼isFollowingメソッド：ユーザーがフォローしているか -->
         @if (Auth::user()->isFollowing($profileUser->id))
         <a class="btn btn-primary" id='red_btn' name="" href="/search/{{$profileUser->id}}/unfollow">フォロー解除</a>
         <br>

@@ -38,7 +38,7 @@
       $images = $user->images; // ユーザーの画像パスを取得
       $imageUrl = asset('/storage/images/' . $images); // 画像のURLを生成
       @endphp -->
-      <img src="{{ asset('/storage/images/' . $images) }}">
+      <img src="{{ asset('/storage/images/' . $user->images) }}">
     </li>
     <li>
       {{ $user->username }}さん

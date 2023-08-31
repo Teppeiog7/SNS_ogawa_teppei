@@ -47,7 +47,7 @@
   <div id="UserIsFollowing">
     <ul>
       <li>
-        <img src="{{ asset('/storage/images/' . $images) }}">
+        <img src="{{ asset('/storage/images/' . $post->user->images) }}">
       </li>
       <li>
         <p>{{ $post->user->username }}</p>
@@ -74,7 +74,7 @@
   <div id="User_comment">
     <ul>
       <li>
-        <p><img src="{{ asset('/storage/images/' . $images) }}"></p>
+        <p><img src="{{ asset('/storage/images/' . $post->user->images) }}"></p>
       </li>
       <li>
         <p>{{ $post->user->username }}</p>
@@ -88,7 +88,7 @@
           <div class="delete_button">
             <a class="btn-danger" href="/post/{{$post->id}}/delete" onclick="return confirm('こちらの本を削除してもよろしいでしょうか？')">
               <img src="{{ asset('/images/garbage_can-h.png') }}" width="50" height="50" class="image" id="imageA">
-              <img src="{{ asset('/images/trash.png') }}" width="50" height="50" class="image" id="imageB">
+              <img src="{{ asset('/images/garbage_can.png') }}" width="50" height="50" class="image" id="imageB">
             </a>
           </div>
         </div>
@@ -111,9 +111,7 @@
         </button>
         {{ csrf_field() }}
         <a class="js-modal-close" href="">
-          <svg xmlns="http://www.w3.org/2000/svg" width="4%" height="4%" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
-            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z" />
-          </svg>
+          <i class="bi bi-x-square"></i>
         </a>
       </form>
     </div>

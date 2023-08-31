@@ -9,14 +9,14 @@
     </li>
     <li>
       @foreach ($users as $userId)
-      @php
+      <!-- @php
       $user = App\User::find($userId);//Userモデル(userテーブル)にあるidが$userIdと同じものを見つける。
       $imagePath = $user->images; // ユーザーの画像パスを取得
       $imageUrl = asset('/storage/images/' . $imagePath); // 画像のURLを生成
-      @endphp
+      @endphp -->
       <div class="container02">
         <a href="/users/{{ $userId }}">
-          <img src="{{ $imageUrl }}">
+          <img src="{{ asset('/storage/images/' . $user->images) }}">
         </a>
       </div>
       @endforeach
@@ -30,16 +30,16 @@ $sortedPosts = $posts->sortByDesc('created_at');//指定したカラム（ここ
 @endphp
 
 @foreach($sortedPosts as $post)
-@php
+<!-- @php
 $images = $post->user->images; // ユーザーの画像パスを取得
 $imageUrl = asset('/storage/images/' . $images); // 画像のURLを生成
-@endphp
+@endphp -->
 
 <div id="UserIsFollowing">
   <ul>
     <li>
       <a href="/users/{{ $userId }}">
-        <img src="{{ $imageUrl }}">
+        <img src="{{ asset('/storage/images/' . $post->user->images) }}">
       </a>
     </li>
     <li>

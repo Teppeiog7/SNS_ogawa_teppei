@@ -34,7 +34,7 @@ class PostsController extends Controller
         //▼コメントした文章を抽出する。
         $post = $request->input('newPost');
         //ddd($post);
-       // $processedText = str_replace("\n", '<br>', $post);
+        //$processedText = str_replace("\n", '<br>', $post);
         //ddd($processedText);
         //▼postカラムとuser_idカラムに上記情報をPostモデル(Postsテーブル)に代入する。
         Post::create([
