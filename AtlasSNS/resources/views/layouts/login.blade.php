@@ -7,7 +7,7 @@
   <meta name="description" content="ページの内容を表す文章" />
   <title>Atlas SNS</title>
   <!-- bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
   <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
   <!--スマホ,タブレット対応-->
@@ -48,14 +48,13 @@
           </li>
           <li>
             @if (Auth::check())
-            <img src="{{ asset('/storage/images/' . Auth::user()->images) }}">
+            <img src="{{ asset('/storage/images/' . Auth::user()->images) }}" class="img_icon">
             @endif
           </li>
         </ul>
       </div>
     </ul>
   </header>
-
 
   <div id="row">
     <div id="container">

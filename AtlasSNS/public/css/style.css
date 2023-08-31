@@ -481,10 +481,11 @@ span {
 
 .all_container ul li:last-child {
     display: flex;
-    width: 30%;
+    width: 100%;
     margin: 5px;
     text-align: center;
     font-size: 24px;
+    flex-wrap: wrap;
 }
 
 .all_container ul li img:last-child {
@@ -637,6 +638,7 @@ span {
 
 .user_profile ul {
     display: flex;
+    position: relative;
 }
 
 .user_profile ul li:first-child {
@@ -652,19 +654,21 @@ span {
     width: 70%;
 }
 
-.user_profile ul li:last-child {
-    position: relative;
-    width: 15%;
+.user_profile ul li ul li {
+    padding: 20px;
+    width: 30%;
+    font-size: 24px;
 }
 
-.profile_button {
+.user_profile ul li:last-child {
     position: absolute;
-    right: 0;
     bottom: 0;
+    right: 0;
 }
 
 .user_profile ul li div {
     display: flex;
+    margin: 10px;
 }
 
 .user_profile ul li div p {
@@ -677,3 +681,16 @@ span {
 }
 
 /* ------ここまで profileEdit.blade.php ------ */
+
+/* ------ここから 追加したレイアウト部分 ------ */
+
+.img_icon {
+    display: inline-block;
+    height: 70px;
+}
+
+.img_icon img {
+    height: 100%;
+}
+
+/* ------ここまで 追加したレイアウト部分 ------ */

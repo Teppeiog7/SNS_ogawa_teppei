@@ -16,7 +16,7 @@
       @endphp -->
       <div class="container02">
         <a href="/users/{{ $userId }}">
-          <img src="{{ asset('/storage/images/' . $user->images) }}">
+          <img src="{{ asset('/storage/images/' . $user->images) }}" class="img_icon">
         </a>
       </div>
       @endforeach
@@ -25,11 +25,7 @@
 </div>
 <span></span>
 
-@php
-$sortedPosts = $posts->sortByDesc('created_at');//指定したカラム（ここでは created_at カラム）の値を降順（大きい値から小さい値へ）でソートするためのメソッド
-@endphp
-
-@foreach($sortedPosts as $post)
+@foreach($posts as $post)
 <!-- @php
 $images = $post->user->images; // ユーザーの画像パスを取得
 $imageUrl = asset('/storage/images/' . $images); // 画像のURLを生成
@@ -39,7 +35,7 @@ $imageUrl = asset('/storage/images/' . $images); // 画像のURLを生成
   <ul>
     <li>
       <a href="/users/{{ $userId }}">
-        <img src="{{ asset('/storage/images/' . $post->user->images) }}">
+        <img src="{{ asset('/storage/images/' . $post->user->images) }}" class="img_icon">
       </a>
     </li>
     <li>

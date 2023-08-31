@@ -203,13 +203,12 @@ class UsersController extends Controller
 
     }
 
-
     //=====================================
 
 }
 
 
-/*
+/*▼なし
 public function register(Request $request){
         if($request->isMethod('post')){
             $data = $request->input();

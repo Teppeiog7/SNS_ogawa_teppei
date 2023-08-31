@@ -27,18 +27,13 @@
   </form>
 </dic>
 
-
 <span></span>
 
 <div class="user_search">
   @foreach ($users as $user)
   <ul>
     <li>
-      <!-- @php
-      $images = $user->images; // ユーザーの画像パスを取得
-      $imageUrl = asset('/storage/images/' . $images); // 画像のURLを生成
-      @endphp -->
-      <img src="{{ asset('/storage/images/' . $user->images) }}">
+      <img src="{{ asset('/storage/images/' . $user->images) }}" class="img_icon">
     </li>
     <li>
       {{ $user->username }}さん

@@ -22,10 +22,10 @@ class FollowsController extends Controller
         //ddd($user);
         //▼ログインユーザーのフォローしているユーザーの取得
         //pluckメソッド:指定したカラムの値を取得
-        $followingUsers = $user->followUsers()->pluck('followed_id');;
+        $followingUsers = $user->followUsers()->pluck('followed_id');
         //ddd($followingUsers);
-        //▼「Postテーブルのユーザー」と「ユーザーがフォローしているid」が一致している値をすべて出力
-        $posts = Post::with('user')->whereIn('user_id', $followingUsers)->get();
+        //▼全ユーザー情報を新しい日付順で抽出し、「Postテーブルのユーザー」と「ユーザーがフォローしているid」が一致している値をすべて出力
+        $posts = Post::latest()->with('user')->whereIn('user_id', $followingUsers)->get();
         //ddd($posts);
         //▼viewメソッド：画面遷移時に使用するメソッド
         //▼第一引数について：'follows' フォルダ内の 'followList.blade.php' ファイルを指定しています。(画面遷移)
@@ -44,8 +44,9 @@ class FollowsController extends Controller
         //pluckメソッド:指定したカラムの値を取得
         $followersUsers = $user->followers()->pluck('following_id');;
         //ddd($followingUsers);
-        //▼「Postテーブルのユーザー」と「ユーザーがフォローされているid」が一致している値をすべて出力
-        $posts = Post::with('user')->whereIn('user_id', $followersUsers)->get();
+
+        //▼▼全ユーザー情報を新しい日付順で抽出し、「Postテーブルのユーザー」と「ユーザーがフォローされているid」が一致している値をすべて出力
+        $posts = Post::latest()->with('user')->whereIn('user_id', $followersUsers)->get();
         //ddd($posts);
         //▼viewメソッド：画面遷移時に使用するメソッド
         //▼第一引数について：'follows' フォルダ内の 'followerList.blade.php' ファイルを指定しています。(画面遷移)
@@ -71,7 +72,6 @@ class FollowsController extends Controller
              //フォローしていなければフォローする
              $follower->follow($user->id);
         }
-
         //▼backメソッド：上記処理後、前の画面に戻る
         return back();
 
@@ -101,13 +101,5 @@ class FollowsController extends Controller
     }
 
     //=====================================
-    /*
 
-
-
-/*
-    public function show(User $user){
-
-    }
-*/
 }

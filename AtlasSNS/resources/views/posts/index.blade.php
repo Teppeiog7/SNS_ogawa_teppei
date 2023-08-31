@@ -10,7 +10,7 @@
     <ul>
       <li>
         @if (Auth::check())
-        <img src="{{ asset('/storage/images/' . Auth::user()->images) }}">
+        <img src="{{ asset('/storage/images/' . Auth::user()->images) }}" class="img_icon">
         @endif
       </li>
       <li>
@@ -25,7 +25,7 @@
         </div>
       </li>
       <li>
-        <button type="submit" id="image-button01"><img src="{{ asset('/images/post.png') }}"></button>
+        <button type="submit" id="image-button01"><img src="{{ asset('/images/post.png') }}" class="img_icon"></button>
       </li>
       {!! Form::close() !!}
     </ul>
@@ -39,15 +39,10 @@
 
   <!-- もしログインユーザーがフォローしているユーザーがいればフォローユーザーの投稿を出力 -->
 
-  <!-- @php
-  $images = $post->user->images; // ユーザーの画像パスを取得
-  $imageUrl = asset('/storage/images/' . $images); // 画像のURLを生成
-  @endphp -->
-
   <div id="UserIsFollowing">
     <ul>
       <li>
-        <img src="{{ asset('/storage/images/' . $post->user->images) }}">
+        <img src="{{ asset('/storage/images/' . $post->user->images) }}" class="img_icon">
       </li>
       <li>
         <p>{{ $post->user->username }}</p>
@@ -66,15 +61,10 @@
 
   <!-- ログインユーザーだけの投稿を出力 -->
 
-  <!-- @php
-  $images = $post->user->images; // ユーザーの画像パスを取得
-  $imageUrl = asset('/storage/images/' . $images); // 画像のURLを生成
-  @endphp -->
-
   <div id="User_comment">
     <ul>
       <li>
-        <p><img src="{{ asset('/storage/images/' . $post->user->images) }}"></p>
+        <p><img src="{{ asset('/storage/images/' . $post->user->images) }}" class="img_icon"></p>
       </li>
       <li>
         <p>{{ $post->user->username }}</p>
@@ -111,7 +101,9 @@
         </button>
         {{ csrf_field() }}
         <a class="js-modal-close" href="">
-          <i class="bi bi-x-square"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="4%" height="4%" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z" />
+          </svg>
         </a>
       </form>
     </div>
@@ -119,12 +111,8 @@
 
   @endif
 
-
-
   @endforeach
 
-
-  <br>
 </div>
 
 @endsection

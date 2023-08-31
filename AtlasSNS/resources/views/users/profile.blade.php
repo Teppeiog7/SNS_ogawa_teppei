@@ -5,17 +5,17 @@
 <div class="user_profile">
   <ul>
     <li>
-      <img src="{{ asset('/storage/images/' . $profileUser->images) }}">
+      <img src="{{ asset('/storage/images/' . $profileUser->images) }}" class="img_icon">
     </li>
     <li>
-      <div>
-        <p>name</p>
-        <p>{{ $profileUser->username }}</p>
-      </div>
-      <div>
-        <p>bio</p>
-        <p>{{ $profileUser->bio }}</p>
-      </div>
+      <ul>
+        <li>name</li>
+        <li>{{ $profileUser->username }}</li>
+      </ul>
+      <ul>
+        <li>bio</li>
+        <li>{{ $profileUser->bio }}</li>
+      </ul>
     </li>
     <li>
       <div class="profile_button">
@@ -27,7 +27,6 @@
         @else
         <a class="btn btn-primary" name="" href="/search/{{$profileUser->id}}/follow">フォローする</a>
         @endif
-
       </div>
     </li>
   </ul>
@@ -39,7 +38,7 @@
 <div id="User_comment">
   <ul>
     <li>
-      <img src="{{ asset('/storage/images/' . $profileUser->images) }}">
+      <img src="{{ asset('/storage/images/' . $profileUser->images) }}" class="img_icon">
     </li>
     <li>
       <p>{{ $post->user->username }}</p>
@@ -53,6 +52,5 @@
   <span></span>
 </div>
 @endforeach
-
 
 @endsection

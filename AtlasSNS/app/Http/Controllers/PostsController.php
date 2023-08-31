@@ -34,7 +34,7 @@ class PostsController extends Controller
         //▼コメントした文章を抽出する。
         $post = $request->input('newPost');
         //ddd($post);
-        //$processedText = str_replace("\n", '<br>', $post);
+
         //ddd($processedText);
         //▼postカラムとuser_idカラムに上記情報をPostモデル(Postsテーブル)に代入する。
         Post::create([
@@ -62,16 +62,6 @@ class PostsController extends Controller
         return view('posts.index', compact('posts','loggedInUser'));
     }
 
-    //=====================================
-    /*
-    public function updateForm($id)
-    {
-        //ddd($id);
-        $post = Post::where('id', $id)->first();
-        //ddd($post);
-        return view('posts.updateForm', ['post'=>$post]);
-    }
-    */
     //=====================================
 
     public function update(Request $request)
